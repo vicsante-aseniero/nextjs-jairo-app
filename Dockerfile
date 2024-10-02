@@ -7,8 +7,11 @@ COPY . /app
 # Set the working directory
 WORKDIR /app
 
+# Set the environment variable to run the Next.js application in production mode
+ENV NODE_ENV production
+
 # Install dependencies
-RUN npm ci
+RUN npm ci --include=dev
 
 # Build the Next.js application for production
 RUN npm run build
