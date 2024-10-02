@@ -1,6 +1,9 @@
 # Dockerfile
 FROM node:20 AS build-env
 
+# Disable telemetry
+ENV NEXT_TELEMETRY_DISABLED 1
+
 # Copy files and folders to the working directory
 COPY . /app
 
@@ -12,6 +15,9 @@ ENV NODE_ENV production
 
 # Install dependencies
 RUN npm ci --include=dev
+
+# Copy files. Use dockerignore to avoid copying node_modules
+COPY . .
 
 # Build the Next.js application for production
 RUN npm run build
@@ -28,9 +34,10 @@ WORKDIR /app
 # Set the environment variable to run the Next.js application in production mode
 ENV NODE_ENV production
 ENV PORT 8090
+ENV NEXT_TELEMETRY_DISABLED 1
 
 # Expose the port that the application will run on
 EXPOSE 8090
 
 # Run NextJS app
-CMD ["npm", "start"]
+CMD ["./node_modules/next/dist/bin/next", "start"]
