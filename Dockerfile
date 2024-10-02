@@ -8,7 +8,7 @@ COPY . /app
 WORKDIR /app
 
 # Install dependencies
-RUN npm ci --omit=dev
+RUN npm ci
 
 # Build the Next.js application for production
 RUN npm run build
