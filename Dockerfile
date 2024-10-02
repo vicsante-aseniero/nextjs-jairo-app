@@ -20,7 +20,7 @@ COPY --from=build-env /app /app
 WORKDIR /app
 
 # Build the Next.js application for production
-RUN sudo npm run build
+RUN npm run build
 # Set the environment variable to run the Next.js application in production mode
 ENV NODE_ENV production
 ENV PORT 8090
