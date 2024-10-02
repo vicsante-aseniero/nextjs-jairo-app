@@ -1,8 +1,9 @@
-# add git-ignore syntax here of things you don't want copied into docker image
-
-.git
-.results
-scripts
-*Dockerfile*
+# Don't copy node_modules
 node_modules
-.env
+
+# Ignore common folders that we do not need
+.git
+.github
+.vscode
+.devcontainer
+.next
