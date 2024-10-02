@@ -8,7 +8,7 @@ COPY . /app
 WORKDIR /app
 
 # Install dependencies
-RUN sudo npm ci --omit=dev
+RUN npm ci --omit=dev
 
 # Use "Distroless" Container Images" https://github.com/GoogleContainerTools/distroless
 FROM gcr.io/distroless/nodejs20-debian12
