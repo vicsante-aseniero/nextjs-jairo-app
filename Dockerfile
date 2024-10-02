@@ -8,7 +8,7 @@ COPY . /app
 WORKDIR /app
 
 # Install dependencies
-RUN npm ci --omit=dev
+RUN sudo npm ci --omit=dev
 
 # Use "Distroless" Container Images" https://github.com/GoogleContainerTools/distroless
 FROM gcr.io/distroless/nodejs20-debian12
@@ -20,7 +20,7 @@ COPY --from=build-env /app /app
 WORKDIR /app
 
 # Build the Next.js application for production
-RUN npm run build
+RUN sudo npm run build
 # Set the environment variable to run the Next.js application in production mode
 ENV NODE_ENV production
 ENV PORT 8090
