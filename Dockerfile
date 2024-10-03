@@ -33,11 +33,12 @@ WORKDIR /app
 
 # Set the environment variable to run the Next.js application in production mode
 ENV NODE_ENV production
-ENV PORT 8090
+ENV PORT 80
 ENV NEXT_TELEMETRY_DISABLED 1
 
 # Expose the port that the application will run on
-EXPOSE 8090
+EXPOSE 80
+EXPOSE 443
 
 # Run NextJS app
 CMD ["./node_modules/next/dist/bin/next", "start"]
